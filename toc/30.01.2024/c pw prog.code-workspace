@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "../.."
+	},
+	{
+		"path": "D:/Clubs/Ecell/Technical domain/webnew"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "webnew"
+  }
+}
