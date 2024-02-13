@@ -1,4 +1,4 @@
-// 4th symbol is always 1
+// design a nfa having ending withh 00
 
 #include <iostream>
 #include <vector>
@@ -18,9 +18,9 @@ int main()
 
     for (int j = 0; j < x; j++)
     {
-      if (state[0] == 5)
+      if (state[0] == 3)
       {
-        state.push_back(5);
+        state.push_back(3);
         state.erase(state.begin());
         continue;
       }
@@ -29,23 +29,14 @@ int main()
         if (state[0] == 0)
         {
           state.push_back(0);
-          state.push_back(1);
         }
         else if (state[0] == 1)
         {
-          state.push_back(2);
+          state.push_back(3);
         }
         else if (state[0] == 2)
         {
           state.push_back(3);
-        }
-        else if (state[0] == 3)
-        {
-          state.push_back(4);
-        }
-        else if (state[0] == 4)
-        {
-          state.push_back(5);
         }
       }
       else if (s[i] == '0')
@@ -53,27 +44,21 @@ int main()
         if (state[0] == 0)
         {
           state.push_back(0);
+          state.push_back(1);
         }
         else if (state[0] == 1)
         {
+
           state.push_back(2);
         }
         else if (state[0] == 2)
         {
           state.push_back(3);
         }
-        else if (state[0] == 3)
-        {
-          state.push_back(4);
-        }
-        else if (state[0] == 4)
-        {
-          state.push_back(5);
-        }
       }
       else
       {
-        cout << "Invalid input\n";
+        cout << "Invelid input\n";
         return 0;
       }
       state.erase(state.begin());
@@ -82,7 +67,7 @@ int main()
 
   for (auto it : state)
   {
-    if (it == 4)
+    if (it == 2)
     {
       cout << "string accepted\n";
       return 0;
