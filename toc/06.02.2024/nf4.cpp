@@ -1,4 +1,4 @@
-// 4th symbol is always 1
+// design a nfa starting with 1 ending with 0 or start with 0 end with 1
 
 #include <iostream>
 #include <vector>
@@ -18,9 +18,9 @@ int main()
 
     for (int j = 0; j < x; j++)
     {
-      if (state[0] == 5)
+      if (state[0] == 4)
       {
-        state.push_back(5);
+        state.push_back(4);
         state.erase(state.begin());
         continue;
       }
@@ -28,20 +28,20 @@ int main()
       {
         if (state[0] == 0)
         {
-          state.push_back(0);
-          state.push_back(1);
+          state.push_back(3);
         }
         else if (state[0] == 1)
         {
-          state.push_back(2);
+          state.push_back(4);
         }
         else if (state[0] == 2)
         {
-          state.push_back(3);
+          state.push_back(1);
+          state.push_back(2);
         }
         else if (state[0] == 3)
         {
-          state.push_back(4);
+          state.push_back(3);
         }
       }
       else if (s[i] == '0')

@@ -1,74 +1,77 @@
-// WAP to implement NFA to accept strings starting with 1 and ending with 0.
-#include <iostream>
-#include <cstring>
-using namespace std;
-int cst1 = 0;
-int cst2 = 0;
-int isValid(string str)
-{
-  int f = 0;
-  int l = str.length();
-  for (int i = 0; i < l; i++)
-  {
-    if ((str[i] == '0') || (str[i] == '1'))
-    {
-      f = 0;
-    }
-    else
-    {
-      f = 1;
-      break;
-    }
-  }
-  if (f == 0)
-  {
-    return 1;
-  }
-  else
-  {
-    return 0;
-  }
-}
-int isAccepted(string str)
-{
+// design a nfa having starting with 1 and ending with 0
 
-  int l = str.length();
-  int tt1[4][2] = {
-      {3, 1},
-      {1, 1},
-      {2, 1},
-      {3, 3}};
-  int tt2[4][2] = {// DFA
-                   {3, 1},
-                   {2, 1},
-                   {2, 1},
-                   {3, 3}};
-  for (int i = 0; i < l; i++)
-  {
-    cst1 = tt1[cst1][str[i] - '0'];
-    cst2 = tt2[cst2][str[i] - '0'];
-  }
-  if ((cst1 == 2) || (cst2 == 2))
-  {
-    return 1;
-  }
-  else
-  {
-    return 0;
-  }
-}
+#include <iostream>
+#include <vector>
+using namespace std;
+
 int main()
 {
-  string str;
-  cout << "Enter a string: ";
-  cin >> str;
-  if ((isAccepted(str)) && (isValid(str)))
+  string s;
+  cout << "Enter the string :";
+  cin >> s;
+  vector<int> state;
+  state.push_back(0);
+  for (int i = 0; i < s.size(); i++)
   {
-    cout << str << " is accepted.";
+
+    int x = state.size();
+
+    for (int j = 0; j < x; j++)
+    {
+      if (state[0] == 3)
+      {
+        state.push_back(3);
+        state.erase(state.begin());
+        continue;
+      }
+      if (s[i] == '1')
+      {
+        if (state[0] == 0)
+        {
+          state.push_back(1);
+        }
+        else if (state[0] == 1)
+        {
+          state.push_back(1);
+        }
+        else if (state[0] == 2)
+        {
+          state.push_back(3);
+        }
+      }
+      else if (s[i] == '0')
+      {
+        if (state[0] == 0)
+        {
+          state.push_back(3);
+        }
+        else if (state[0] == 1)
+        {
+          state.push_back(1);
+          state.push_back(2);
+        }
+        else if (state[0] == 2)
+        {
+          state.push_back(3);
+        }
+      }
+      else
+      {
+        cout << "Invelid input\n";
+        return 0;
+      }
+      state.erase(state.begin());
+    }
   }
-  else
+
+  for (auto it : state)
   {
-    cout << str << " is not accepted.";
+    if (it == 2)
+    {
+      cout << "string accepted\n";
+      return 0;
+    }
   }
+  cout << "String rejected\n";
   return 0;
 }

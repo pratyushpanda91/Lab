@@ -1,5 +1,4 @@
-// design a nfa starting with 1 ending with 0 or start with 0 end with 1
-
+// design a nfa containging 00 or 11 as substring
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -28,40 +27,40 @@ int main()
       {
         if (state[0] == 0)
         {
+          state.push_back(0);
           state.push_back(3);
         }
         else if (state[0] == 1)
         {
-          state.push_back(4);
+          state.push_back(1);
         }
         else if (state[0] == 2)
         {
-          state.push_back(1);
-          state.push_back(2);
+          state.push_back(4);
         }
         else if (state[0] == 3)
         {
-          state.push_back(3);
+          state.push_back(1);
         }
       }
       else if (s[i] == '0')
       {
         if (state[0] == 0)
         {
+          state.push_back(0);
           state.push_back(2);
         }
         else if (state[0] == 1)
         {
-          state.push_back(4);
+          state.push_back(1);
         }
         else if (state[0] == 2)
         {
-          state.push_back(2);
+          state.push_back(1);
         }
         else if (state[0] == 3)
         {
-          state.push_back(1);
-          state.push_back(3);
+          state.push_back(0);
         }
       }
       else

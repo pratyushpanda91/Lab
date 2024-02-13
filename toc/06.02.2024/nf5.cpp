@@ -1,4 +1,4 @@
-// design a nfa having 00 or 11 as substring
+// 4th symbol is always 1
 
 #include <iostream>
 #include <vector>
@@ -18,9 +18,9 @@ int main()
 
     for (int j = 0; j < x; j++)
     {
-      if (state[0] == 3)
+      if (state[0] == 5)
       {
-        state.push_back(3);
+        state.push_back(5);
         state.erase(state.begin());
         continue;
       }
@@ -28,36 +28,45 @@ int main()
       {
         if (state[0] == 0)
         {
+          state.push_back(0);
           state.push_back(1);
         }
         else if (state[0] == 1)
         {
-          state.push_back(1);
-        }
-        else if (state[0] == 2)
-        {
-          state.push_back(3);
-        }
-      }
-      else if (s[i] == '0')
-      {
-        if (state[0] == 0)
-        {
-          state.push_back(3);
-        }
-        else if (state[0] == 1)
-        {
-          state.push_back(1);
           state.push_back(2);
         }
         else if (state[0] == 2)
         {
           state.push_back(3);
         }
+        else if (state[0] == 3)
+        {
+          state.push_back(4);
+        }
+      }
+      else if (s[i] == '0')
+      {
+        if (state[0] == 0)
+        {
+          state.push_back(2);
+        }
+        else if (state[0] == 1)
+        {
+          state.push_back(4);
+        }
+        else if (state[0] == 2)
+        {
+          state.push_back(2);
+        }
+        else if (state[0] == 3)
+        {
+          state.push_back(1);
+          state.push_back(3);
+        }
       }
       else
       {
-        cout << "Invelid input\n";
+        cout << "Invalid input\n";
         return 0;
       }
       state.erase(state.begin());
@@ -66,7 +75,7 @@ int main()
 
   for (auto it : state)
   {
-    if (it == 2)
+    if (it == 1)
     {
       cout << "string accepted\n";
       return 0;
