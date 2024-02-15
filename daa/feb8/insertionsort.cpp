@@ -28,7 +28,7 @@ void printArray(int arr[], int n)
 }
 int main()
 {
-  int arr[200], i, N;
+  int arr[20000], i, N;
   cout << "Enter the size of array";
   cin >> N;
   cout << "Enter the elements" << endl;
