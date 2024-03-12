@@ -146,7 +146,7 @@ int main()
   }
 
   // Final states
-  cout << "final states (separated by spaces): ";
+  cout << "Enter final states (separated by spaces): ";
   while (cin >> state1)
   {
     if (state1 == -1)
