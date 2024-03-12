@@ -26,7 +26,7 @@ void minimizeDFA(DFA &dfa)
   {
     if (dfa.finalStates.find(i) != dfa.finalStates.end())
     {
-      equivalenceClasses[0].insert(i);
+      equivalenceClasses[0].insert(i); // Group 0: Final states
     }
     else
     {
